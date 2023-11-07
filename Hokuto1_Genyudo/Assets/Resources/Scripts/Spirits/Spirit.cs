@@ -5,10 +5,10 @@ using UnityEngine;
 
 // レベルに応じたステータスの違うモンスターを生成するクラス
 // 注意：データのみ扱う：純粋C#のクラス
-public class Pokemon : MonoBehaviour
+public class Spirit
 {
     // ベースとなるデータ
-    public PokemonBase Base { get; set; }
+    public SpiritBase Base { get; set; }
     public int Level { get; set; }
 
     public int HP { get; set; }
@@ -16,22 +16,22 @@ public class Pokemon : MonoBehaviour
     public List<Move> Moves { get; set; }
 
     // コンストラクター：生成時の初期設定
-    public Pokemon(PokemonBase pBase, int pLevel)
+    public Spirit(SpiritBase sBase, int pLevel)
     {
-        Base = pBase;
+        Base = sBase;
         this.Level = pLevel;
         HP = MaxHP;
 
         Moves = new List<Move>();
         // 使える技の設定：覚える技のレベル以上なら、Movesに追加
-        foreach(LearnableMove learnableMove in pBase.LearnableMoves)
+        foreach(LearnableMove learnableMove in sBase.LearnableMoves)
         {
             if(Level >= learnableMove.Level)
             {
                 // 技を覚える
-                Moves.Add(gameObject.AddComponent<Move>());
+                Moves.Add(new Move(learnableMove.Base1));
             }
-            // 4つい上の技は使えない
+            // 4つ以上の技は使えない
             if(Moves.Count >= 4)
             {
                 break;
@@ -69,7 +69,7 @@ public class Pokemon : MonoBehaviour
     // ・戦闘不能
     // ・クリティカル
     // ・相性
-    public DamageDetails TakeDamage(Move move, Pokemon attacker)
+    public DamageDetails TakeDamage(Move move, Spirit attacker)
     {
         // クリティカル
         float critical = 1f;

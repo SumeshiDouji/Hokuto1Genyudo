@@ -9,9 +9,9 @@ public class BattleHud : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] HPBar hpBar;
 
-    Pokemon _pokemon;
+    Spirit _pokemon;
 
-    public void SetData(Pokemon pokemon)
+    public void SetData(Spirit pokemon)
     {
         _pokemon = pokemon;
         nameText.text = pokemon.Base.name;

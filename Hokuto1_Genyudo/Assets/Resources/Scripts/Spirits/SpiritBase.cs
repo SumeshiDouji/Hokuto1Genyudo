@@ -6,7 +6,7 @@ using UnityEngine;
 
 // ポケモンのマスターデータ：外部から変更しない（インスペクターだけ変更可能）
 [CreateAssetMenu]
-public class PokemonBase : ScriptableObject
+public class SpiritBase : ScriptableObject
 {
     // 名前、説明、画像、タイプ、ステータス
     [SerializeField] new string name;
