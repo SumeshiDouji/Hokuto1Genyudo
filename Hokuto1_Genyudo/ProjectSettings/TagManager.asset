@@ -15,7 +15,7 @@ TagManager:
   - LongGrassLayer
   - Portal
   - FovLayer
-  - 
+  - InteractableObject
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1603053843
+    locked: 0
+  - name: DialogBox
+    uniqueID: 31981747
     locked: 0
