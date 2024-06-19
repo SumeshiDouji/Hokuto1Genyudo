@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,7 +24,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameController gameController;
     [SerializeField] GameLayer gameLayer;
-    PlayerState playerState;
+
+    public UnityAction OnMenuOpened;
 
     public enum PlayerState
     {
@@ -73,6 +75,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Interact();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            OnMenuOpened();
         }
     }
     void Interact()
